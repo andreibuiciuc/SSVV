@@ -1,8 +1,5 @@
 package ssvv.example;
 
-
-import domain.Student;
-import domain.Tema;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -19,25 +16,19 @@ import validation.TemaValidator;
  */
 public class AppTest extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
+
     public AppTest( String testName )
     {
         super( testName );
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
     public static Test suite()
     {
         return new TestSuite( AppTest.class );
     }
 
-    private void addStudentTestCases() {
+    @org.junit.Test
+    private void addStudent_01() {
         StudentValidator studentValidator = new StudentValidator();
         TemaValidator temaValidator = new TemaValidator();
         NotaValidator notaValidator = new NotaValidator();
@@ -55,8 +46,9 @@ public class AppTest extends TestCase
         assertEquals(result2, 1);
     }
 
+
     public void testApp()
     {
-        addStudentTestCases();
+        addStudent_01();
     }
 }

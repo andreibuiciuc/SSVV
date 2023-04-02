@@ -1,8 +1,5 @@
 package ssvv.example;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
 import repository.NotaXMLRepository;
 import repository.StudentXMLRepository;
 import repository.TemaXMLRepository;
@@ -11,24 +8,16 @@ import validation.NotaValidator;
 import validation.StudentValidator;
 import validation.TemaValidator;
 
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+
 /**
  * Unit test for simple App.
  */
-public class AppTest extends TestCase
+public class AppTest
 {
-
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
-
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-    @org.junit.Test
-    private void addStudent_01() {
+    @Test
+    public void addStudent_01() {
         StudentValidator studentValidator = new StudentValidator();
         TemaValidator temaValidator = new TemaValidator();
         NotaValidator notaValidator = new NotaValidator();
@@ -46,9 +35,4 @@ public class AppTest extends TestCase
         assertEquals(result2, 1);
     }
 
-
-    public void testApp()
-    {
-        addStudent_01();
-    }
 }

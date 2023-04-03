@@ -16,23 +16,87 @@ import org.junit.Test;
  */
 public class AppTest
 {
+    private final StudentValidator studentValidator;
+    private final TemaValidator temaValidator;
+    private final NotaValidator notaValidator;
+    private final StudentXMLRepository studentRepository;
+    private final TemaXMLRepository homeworkRepository;
+    private final NotaXMLRepository gradesRepository;
+    private Service service;
+
+    public AppTest() {
+        studentValidator = new StudentValidator();
+        temaValidator = new TemaValidator();
+        notaValidator = new NotaValidator();
+
+        studentRepository = new StudentXMLRepository(studentValidator, "studenti.xml");
+        homeworkRepository = new TemaXMLRepository(temaValidator, "teme.xml");
+        gradesRepository = new NotaXMLRepository(notaValidator, "note.xml");
+
+        service = new Service(studentRepository, homeworkRepository, gradesRepository);
+    }
+
     @Test
     public void addStudent_01() {
-        StudentValidator studentValidator = new StudentValidator();
-        TemaValidator temaValidator = new TemaValidator();
-        NotaValidator notaValidator = new NotaValidator();
+        int result;
 
-        StudentXMLRepository fileRepository1 = new StudentXMLRepository(studentValidator, "studenti.xml");
-        TemaXMLRepository fileRepository2 = new TemaXMLRepository(temaValidator, "teme.xml");
-        NotaXMLRepository fileRepository3 = new NotaXMLRepository(notaValidator, "note.xml");
+        // Invalid
+        result = service.saveStudent("", "Test1", 931);
+        assertEquals(result, 1);
 
-        Service service = new Service(fileRepository1, fileRepository2, fileRepository3);
+        result = service.saveStudent(null, "Test2", 931);
+        assertEquals(result, 1);
 
-        int result1 = service.saveStudent("", "Test1", 931);
-        assertEquals(result1, 1);
+        // Valid
+        result = service.saveStudent("not empty", "Test3", 931);
+        assertEquals(result, 0);
+    }
 
-        int result2 = service.saveStudent(null, "Test2", 931);
-        assertEquals(result2, 1);
+    @Test
+    public void addStudent_02() {
+        int result;
+
+        // Invalid
+        result = service.saveStudent("Name1", "", 931);
+        assertEquals(result, 1);
+
+        result = service.saveStudent("Name2", null, 931);
+        assertEquals(result, 1);
+
+        // Valid
+        result = service.saveStudent("Name3", "not empty", 931);
+        assertEquals(result, 0);
+    }
+
+    @Test
+    public void addStudent_03() {
+        int result;
+
+        // Invalid
+        result = service.saveStudent("Id1", "Name1", -100);
+        assertEquals(result, 1);
+
+        result = service.saveStudent("Id2", "Name2", 950);
+        assertEquals(result, 1);
+
+        result = service.saveStudent("Id3", "Name3", 110);
+        assertEquals(result, 1);
+
+        result = service.saveStudent("Id4", "Name4", 938);
+        assertEquals(result, 1);
+
+        // Valid
+        result = service.saveStudent("Id5", "Name5", 111);
+        assertEquals(result, 0);
+
+        result = service.saveStudent("Id6", "Name6", 112);
+        assertEquals(result, 0);
+
+        result = service.saveStudent("Id7", "Name7", 936);
+        assertEquals(result, 0);
+
+        result = service.saveStudent("Id8", "Name8", 937);
+        assertEquals(result, 0);
     }
 
 }

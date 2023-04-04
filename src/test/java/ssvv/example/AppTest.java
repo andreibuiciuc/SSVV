@@ -41,14 +41,14 @@ public class AppTest
         int result;
 
         // Invalid
-        result = service.saveStudent("", "Test1", 931);
+        result = service.saveStudent("", "Name1", 931);
         assertEquals(result, 1);
 
-        result = service.saveStudent(null, "Test2", 931);
+        result = service.saveStudent(null, "Name1", 931);
         assertEquals(result, 1);
 
         // Valid
-        result = service.saveStudent("not empty", "Test3", 931);
+        result = service.saveStudent("not empty", "Name1", 931);
         assertEquals(result, 0);
     }
 
@@ -99,4 +99,21 @@ public class AppTest
         assertEquals(result, 0);
     }
 
+    @Test
+    public void addAssignment_01() {
+        int result;
+
+        // Invalid
+        result = service.saveTema("", "HH1", 8, 6);
+        assertEquals(result, 1);
+    }
+
+    @Test
+    public void addAssignment_02() {
+        int result;
+
+        // Valid
+        result = service.saveTema("HW1",  "HW1", 6, 3);
+        assertEquals(result, 0);
+    }
 }

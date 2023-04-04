@@ -15,4 +15,9 @@
         <Deadline>7</Deadline>
         <Startline>4</Startline>
     </tema>
+    <tema ID="HW1">
+        <Descriere>HW1</Descriere>
+        <Deadline>6</Deadline>
+        <Startline>3</Startline>
+    </tema>
 </Entitati>

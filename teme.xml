@@ -10,6 +10,11 @@
         <Deadline>8</Deadline>
         <Startline>7</Startline>
     </tema>
+    <tema ID="HW2">
+        <Descriere>HW2</Descriere>
+        <Deadline>6</Deadline>
+        <Startline>4</Startline>
+    </tema>
     <tema ID="3">
         <Descriere>ssvv homework</Descriere>
         <Deadline>7</Deadline>

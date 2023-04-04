@@ -106,6 +106,19 @@ public class AppTest
         // Invalid
         result = service.saveTema("", "HH1", 8, 6);
         assertEquals(result, 1);
+
+        result = service.saveTema(null, "HH1", 8, 6);
+        assertEquals(result, 1);
+
+        result = service.saveTema("HW2", "HW2", 4, 6);
+        assertEquals(result, 1);
+
+        result = service.saveTema("HW2", "HW2", 0, 5);
+        assertEquals(result, 1);
+
+        result = service.saveTema("HW2", "HW2", 1, 15);
+        assertEquals(result, 1);
+
     }
 
     @Test

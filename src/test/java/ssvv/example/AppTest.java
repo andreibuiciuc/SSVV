@@ -100,33 +100,51 @@ public class AppTest
     }
 
     @Test
-    public void addAssignment_01() {
-        int result;
-
-        // Invalid
-        result = service.saveTema("", "HH1", 8, 6);
+    public void addAssignmentWithEmptyId() {
+        int result = service.saveTema("", "HH1", 8, 6);
         assertEquals(result, 1);
-
-        result = service.saveTema(null, "HH1", 8, 6);
-        assertEquals(result, 1);
-
-        result = service.saveTema("HW2", "HW2", 4, 6);
-        assertEquals(result, 1);
-
-        result = service.saveTema("HW2", "HW2", 0, 5);
-        assertEquals(result, 1);
-
-        result = service.saveTema("HW2", "HW2", 1, 15);
-        assertEquals(result, 1);
-
     }
 
     @Test
-    public void addAssignment_02() {
-        int result;
+    public void addAssignmentWithNullId() {
+        int result = service.saveTema(null, "HH1", 8, 6);
+        assertEquals(result, 1);
+    }
 
-        // Valid
-        result = service.saveTema("HW1",  "HW1", 6, 3);
+    @Test
+    public void addAssignmentWithEmptyDescription() {
+        int result = service.saveTema("test1", "", 8, 6);
+        assertEquals(result, 1);
+    }
+
+    @Test
+    public void addAssignmentWithNullDescription() {
+        int result = service.saveTema("test2", null, 8, 6);
+        assertEquals(result,1);
+    }
+
+    @Test
+    public void addAssignmentWithDeadlineSmallerThanStartline() {
+        int result = service.saveTema("test3", "HW2", 4, 6);
+        assertEquals(result, 1);
+    }
+
+    @Test
+    public void addAssignmentWithInvalidDeadline() {
+        int result = service.saveTema("test4", "HW2", 0, 5);
+        assertEquals(result, 1);
+    }
+
+    @Test
+    public void addAssignmentWithInvalidStartline() {
+        int result = service.saveTema("test5", "HW2", 1, 15);
+        assertEquals(result, 1);
+    }
+
+    @Test
+    public void addAssignmentWithInvalidStartAndDeadline() {
+        int result = service.saveTema("test5",  "HW1", 6, 3);
         assertEquals(result, 0);
     }
+
 }

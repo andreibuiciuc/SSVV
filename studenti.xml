@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Entitati>
+    <student ID="abc">
+        <Nume>Andrei</Nume>
+        <Grupa>931</Grupa>
+    </student>
     <student ID="Name3">
         <Nume>not empty</Nume>
         <Grupa>931</Grupa>
@@ -11,10 +15,6 @@
     <student ID="2">
         <Nume>Maria</Nume>
         <Grupa>222</Grupa>
-    </student>
-    <student ID="abc">
-        <Nume>Andrei</Nume>
-        <Grupa>931</Grupa>
     </student>
     <student ID="4">
         <Nume>Ion</Nume>
@@ -35,6 +35,10 @@
     <student ID="Id6">
         <Nume>Name6</Nume>
         <Grupa>111</Grupa>
+    </student>
+    <student ID="Student1">
+        <Nume>Student1</Nume>
+        <Grupa>931</Grupa>
     </student>
     <student ID="Id5">
         <Nume>Name5</Nume>

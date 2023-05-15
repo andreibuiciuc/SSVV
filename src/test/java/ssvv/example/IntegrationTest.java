@@ -1,5 +1,6 @@
 package ssvv.example;
 
+import domain.Student;
 import org.junit.Test;
 import repository.NotaXMLRepository;
 import repository.StudentXMLRepository;
@@ -12,7 +13,6 @@ import validation.TemaValidator;
 import static org.junit.Assert.assertEquals;
 
 import org.mockito.Mockito;
-import static org.mockito.Mockito.*;
 
 public class IntegrationTest {
     private final StudentValidator studentValidator;

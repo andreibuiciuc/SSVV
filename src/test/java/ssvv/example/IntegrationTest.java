@@ -11,6 +11,9 @@ import validation.TemaValidator;
 
 import static org.junit.Assert.assertEquals;
 
+import org.mockito.Mockito;
+import static org.mockito.Mockito.*;
+
 public class IntegrationTest {
     private final StudentValidator studentValidator;
     private final TemaValidator temaValidator;
@@ -33,7 +36,7 @@ public class IntegrationTest {
     }
 
     @Test
-    public void addStudent() {
+    public void addStudentIntegration() {
         int result = service.saveStudent("Student1", "Student1", 931);
         assertEquals(0, result);
     }
